@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт Анисимова</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #696868;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(rgb(255, 255, 255), rgb(0, 38, 255), rgb(255, 0, 0));
+    }
+    .resume-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    .resume-photo {
+        flex: 1;
+        margin-right: 20px;
+    }
+    .resume-photo img {
+        width: 100%;
+        height: 500px;
+        border-radius: 1000px;
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    }
+    .resume-details {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+    }
+    .resume-details h1 {
+        text-align: center;
+        color: #aaa0a0;
+        font-size: 100px;
+        margin-bottom: 10px;
+        font-style: italic;
+        background: linear-gradient(rgb(255, 255, 255), rgb(0, 38, 255), rgb(255, 0, 0));
+        
+    }
+
+    .resume-details p {
+        margin-left: 10px;
+        color: #ffffff;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .resume-details p1 {
+        margin-left: 10px;
+        color: #0008ff;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .resume-details p2 {
+        margin-left: 10px;
+        color: #ff0000;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .resume-details input[type="text"] {
+        width: 20%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #957272;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    .resume-details button {
+        width: 20%;
+        padding: 10px 20px;
+        background-color: #434343;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+        margin-bottom: 10px;
+    }
+    .resume-details button:hover {
+        background-color: #9a9a9a;
+    }
+    .container-form {
+        text-align: left;
+        margin-bottom: 20px;
+    }
+    .container-form h2 {
+        color: #ffffff;
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+    .form-inputs {
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 20px;
+    }
+    .form-inputs input[type="number"] {
+        width: 200px;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ff0000;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    .form-buttons {
+        display: inline-block;
+        vertical-align: top;
+    }
+    .form-buttons button {
+        padding: 10px 20px;
+        background-color: #434343;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+        margin-bottom: 10px;
+    }
+    .form-buttons button:hover {
+        background-color: #9f9f9f;
+    }
+    .result {
+        font-weight: bold;
+        margin-top: 20px;
+    }
+
+    .ponti {
+            color: #fff;
+            font-size: 40;
+            text-shadow:2px 2px black;
+            border: 2px solid rgb(0, 0, 0);
+            outline: rgb(0, 255, 26) dotted thick;
+        }
+
+</style>
+<body>
+        <div class="resume-container">
+            <div class="resume-photo">
+                <img src="avatarka.png" alt="Мое фото">
+            </div>
+            <div class="resume-details">
+                <h1>Мое резюме</h1>
+                <p><strong>Имя:</strong> <span id="nameSurname" class="ponti" >Дмитрий</span></p>
+                <p><strong>Фамилия:</strong> <span id="surname" class="ponti" >Анисимов</span></p>
+                <p1>О себе: </p1>
+                <p1>Учусь в Московском Государственном Технологическом Университете "СТАНКИН"</p1>
+                <p2>Люблю программирование на html, css, js, c#, c++, c</p2>
+                <p1> <a href="https://vk.com/dimkn">Мой вк</a></p1>
+            
+                <input type="text" id="newName" placeholder="Новое имя">
+                <input type="text" id="newSurname" placeholder="Новая фамилия">
+                <button onclick="changeName()">Изменить Имя</button>
+                <button onclick="changeSurname()">Изменить Фамилию</button>
+                <button onclick="askAge()">Узнать возраст</button>
+            </div>
+        </div>
+
+        <div class="container-form">
+            <h2>Операции с двумя числами</h2>
+
+            <div class="form-inputs">
+                <input type="number" id="num1" placeholder="Введите первое число">
+                <input type="number" id="num2" placeholder="Введите второе число">
+            </div>
+
+
+            <div class="form-buttons">
+                <button onclick="confirmFindMin()">Найти минимум</button>
+                <button onclick="confirmFindMax()">Найти максимум</button>
+                <button onclick="confirmCheckEqual()">Проверить равенство</button>
+            </div>
+            <div class="result" id="result"></div>
+        </div>
+
+
+    <script>
+        function changeName() {
+            var newName = document.getElementById("newName").value;
+            if (newName) {
+                document.getElementById("nameSurname").innerText = newName;
+            } else {
+                alert("Пожалуйста, введите новое имя.");
+            }
+        }
+
+        function changeSurname() {
+            var newSurname = document.getElementById("newSurname").value;
+            if (newSurname) {
+                document.getElementById("surname").innerText = newSurname;
+            } else {
+                alert("Пожалуйста, введите новую фамилию.");
+            }
+        }
+
+        function askAge() {
+            let age;
+            while (true) {
+                age = prompt("Пожалуйста, введите ваш возраст:");
+                if (age === null) {
+                    alert("Ввод отменен, попробуйте снова.");
+                    continue;
+                }
+                if (confirm("Вам действительно " + age + " лет?")) {
+                    alert("Возраст подтвержден.");
+                    break;
+                } else {
+                    alert("Попробуйте ввести возраст снова.");
+                }
+            }
+        }
+
+        function findMin() {
+            let a = parseFloat(document.getElementById('num1').value);
+            let b = parseFloat(document.getElementById('num2').value);
+            let min = Math.min(a, b);
+            document.getElementById('result').innerText = 'Минимум: ' + min;
+        }
+
+        function findMax() {
+            let a = parseFloat(document.getElementById('num1').value);
+            let b = parseFloat(document.getElementById('num2').value);
+            let max = Math.max(a, b);
+            document.getElementById('result').innerText = 'Максимум: ' + max;
+        }
+
+        function checkEqual() {
+            let a = parseFloat(document.getElementById('num1').value);
+            let b = parseFloat(document.getElementById('num2').value);
+            let equal = (a === b);
+            document.getElementById('result').innerText = 'Равно: ' + (equal ? 'да' : 'нет');
+        }
+
+        function confirmAction(action) {
+            if (confirm("Вы уверены, что хотите выполнить эту операцию?")) {
+                action();
+            } else {
+                alert("Операция отменена.");
+            }
+        }
+
+        function confirmFindMin() {
+            confirmAction(findMin);
+        }
+
+        function confirmFindMax() {
+            confirmAction(findMax);
+        }
+
+        function confirmCheckEqual() {
+            confirmAction(checkEqual);
+        }
+    </script>
+</body>
+</html>
